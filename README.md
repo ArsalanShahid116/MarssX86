@@ -73,4 +73,4 @@ o	You will see Qemu running machine simulation
 •	../../../../start_sim; ./BARNES < input.4; ../../../../stop_sim;
 
  
-Start simulation on Qemu by giving image Splash.img and then giving number of input core = 4. Access BARNES in the splash folder. And then stoping the simulation.
+Start simulation on Qemu by giving image Splash.img and then giving number of input core = 2. Access BARNES in the splash folder. And then stoping the simulation.
