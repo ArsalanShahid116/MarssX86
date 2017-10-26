@@ -1,76 +1,56 @@
-MarssX86
-========
-**************************MARSS download and installation**************************
--	Open terminal any type
--	
-o	sudo apt-get install git
+# Xeon Multicore Configuration file for MarssX86
 
-o	git clone git://github.com/avadhpatel/marss.git
+### MARSS download and installation
 
-o	cd marss
+shell$	sudo apt-get install git
+shell$ git clone git://github.com/avadhpatel/marss.git
+shell$ cd marss
+shell$ sudo apt-get install scons
+shell$ sudo apt-get install zlib1g-dev
+shell$ sudo apt-get install g++-multilib
 
-o	sudo apt-get install scons
+Compiling MARSS 
 
-o	sudo apt-get install zlib1g-dev
-
-o	sudo apt-get install g++-multilib
-
-Start Compiling MARSS 
-
-o	scons -Q -c
+shell$ scons -Q -c
 
 Give Number of Core and Enable Debug
 
-o	scons –Q debug=1 c=2
+shell$ scons –Q debug=1 c=2
 
--	Download Image tar http://bertha.cs.binghamton.edu/downloads/splash.tar.bz2
+Download Image tar http://bertha.cs.binghamton.edu/downloads/splash.tar.bz2
+Extract the image file (splash.img) and copy it to marss folder
+Create a config (.cfg) file for your machine
+ 
+shell$ gedit my.cfg
 
--	Extract the image file (splash.img) and copy it to marss folder
-
--	 Create a config (.cfg) file for your machine
--	 
-o	 gedit my.cfg
-
-	Paste the config below
+Paste the config below
 
 -machine xeon_dual_core
-
 -stopinsns 100m
-
 -kill-after-run
-
 -stats results.stats
-
 -logfile results.log
 
-o	Save this file and close gedit
+Save this file and close gedit
 
-**************************MARSS stats file generation**************************
--	Generate stats file (by simulation, I executed BARNES)
--	
-o	Open terminal and type
+### MARSS stats file generation
 
-	cd marss
+Generate stats file (by simulation, I executed BARNES)
+Open terminal and type
 
-	qemu/qemu-system-x86_64 –m 1536 –hda splash.img –simconfig my.cfg
+shell$ cd marss
+shell$ qemu/qemu-system-x86_64 –m 1536 –hda splash.img –simconfig my.cfg
 
-o	Open another terminal and type  
+Open another terminal and type  
+For QEMU, we need to install vinagre … its builtin in fedora but not in ubuntu
 
-o	 for showing QEMU we need to install vinagre … its builtin in fedora but not in ubuntu
+shell$ sudo apt-get install vinagre
+shell$ vinagre 172.0.0.1:5900
 
-	sudo apt-get install vinagre
+You will see Qemu running machine simulation
+Login with password root
 
-	vinagre 172.0.0.1:5900
+Inside Qemu type:
 
-o	You will see Qemu running machine simulation
-
-	Login with password root
-
-	Inside Qemu type
-
-•	cd splash2/codes/apps/barnes
-
-•	../../../../start_sim; ./BARNES < input.4; ../../../../stop_sim;
-
- 
-Start simulation on Qemu by giving image Splash.img and then giving number of input core = 4. Access BARNES in the splash folder. And then stoping the simulation.
+shell$ cd splash2/codes/apps/barnes
+shell$ ../../../../start_sim; ./BARNES < input.4; ../../../../stop_sim;
