@@ -2,7 +2,7 @@
 
 ### MARSS download and installation
 
-shell$	sudo apt-get install git
+shell$	sudo apt-get install git <br/>
 shell$ git clone git://github.com/avadhpatel/marss.git
 shell$ cd marss
 shell$ sudo apt-get install scons
