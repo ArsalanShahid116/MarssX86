@@ -1,4 +1,4 @@
-# Xeon Multicore Configuration file for MarssX86
+# Xeon Multicore Configuration File For MarssX86 Simulator
 
 ### MARSS download and installation
 
